@@ -1,25 +1,40 @@
-import prisma from "@/lib/db";
 import { inngest } from "./client";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { createGroq } from "@ai-sdk/groq";
+import { generateText } from "ai";
 
-export const helloWorld = inngest.createFunction(
-  { id: "hello-world" },
-  { event: "test/hello.world" },
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+});
+
+const groq = createGroq({
+  apiKey: process.env.GROQ_API_KEY,
+});
+
+export const execute = inngest.createFunction(
+  { id: "execute-ai" },
+  { event: "execute/ai" },
   async ({ event, step }) => {
-    // Fetching youtube video
-    await step.sleep("fetching", "5s");
+    const { steps: geminiSteps } = await step.ai.wrap(
+      "gemini-generate-text",
+      generateText,
+      {
+        model: google("gemini-2.5-flash"),
+        system: "You are a helpful assistant",
+        prompt: "What is 2 + 2?",
+      }
+    );
 
-    // Transcribing
-    await step.sleep("transcribing", "5s");
+    const { steps: groqSteps } = await step.ai.wrap(
+      "groq-generate-text",
+      generateText,
+      {
+        model: groq("llama-3.3-70b-versatile"),
+        system: "You are a helpful assistant",
+        prompt: "What is 2 + 2?",
+      }
+    );
 
-    // Sending transcription to AI
-    await step.sleep("sending-to-ai", "5s");
-
-    await step.run("create-workflow", () => {
-      return prisma.workflow.create({
-        data: {
-          name: "workflow-from-inngest",
-        },
-      });
-    });
+    return { geminiSteps, groqSteps };
   }
 );
