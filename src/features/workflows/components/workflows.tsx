@@ -49,6 +49,7 @@ export const WorkflowsList = () => {
       items={workflows.data.items}
       getKey={(workflow) => workflow.id}
       renderItem={(workflow) => <WorkflowItem data={workflow} />}
+      emptyView={<WorkflowsEmpty />}
     />
   );
 };
