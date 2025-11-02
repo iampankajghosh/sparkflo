@@ -61,11 +61,11 @@ function AppSidebar() {
             <Link href="/" prefetch>
               <Image
                 src="/logos/logo.svg"
-                alt="Nodebase"
+                alt="WorkFlo"
                 width={30}
                 height={30}
               />
-              <span className="font-semibold text-sm">Nodebase</span>
+              <span className="font-semibold text-sm">WorkFlo</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>

@@ -1,5 +1,5 @@
 {
-  "name": "nodebase",
+  "name": "workflo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "@ai-sdk/google": "^2.0.23",
     "@ai-sdk/groq": "^2.0.24",
     "@hookform/resolvers": "^5.2.2",
+    "@paralleldrive/cuid2": "^3.0.4",
     "@polar-sh/better-auth": "^1.1.9",
     "@polar-sh/sdk": "^0.35.4",
     "@prisma/client": "^6.16.3",
