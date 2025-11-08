@@ -11,7 +11,7 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
           className="flex items-center gap-2 self-center font-medium"
         >
           <Image src="/logos/logo.svg" alt="WorkFlo" width={30} height={30} />
-          WorkFlo
+          SparkFlo
         </Link>
         {children}
       </div>

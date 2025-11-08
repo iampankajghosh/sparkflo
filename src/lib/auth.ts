@@ -20,8 +20,8 @@ export const auth = betterAuth({
         checkout({
           products: [
             {
-              productId: "4a6161a6-bf2e-4b26-89e6-1c2957face14",
-              slug: "nodebase-pro",
+              productId: "78922d98-5761-4ef0-9660-422aead8e0d9",
+              slug: "SparkFlo-dev",
             },
           ],
           successUrl: process.env.POLAR_SUCCESS_URL,

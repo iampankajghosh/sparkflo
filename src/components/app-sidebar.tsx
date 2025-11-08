@@ -65,7 +65,7 @@ function AppSidebar() {
                 width={30}
                 height={30}
               />
-              <span className="font-semibold text-sm">WorkFlo</span>
+              <span className="font-semibold text-sm">SparkFlo</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
